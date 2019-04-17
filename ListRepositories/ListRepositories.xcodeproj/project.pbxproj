@@ -19,6 +19,10 @@
 		F4C193DB2267943800200078 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193DA2267943800200078 /* Result.swift */; };
 		F4C193DD2267949100200078 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193DC2267949100200078 /* EndPointType.swift */; };
 		F4C193DF2267950F00200078 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193DE2267950F00200078 /* EndPoint.swift */; };
+		F4C193E12267A0C400200078 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193E02267A0C400200078 /* APIClient.swift */; };
+		F4C193E32267A14E00200078 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193E22267A14E00200078 /* APIError.swift */; };
+		F4C193E62267A5CC00200078 /* RepositoreSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193E52267A5CC00200078 /* RepositoreSession.swift */; };
+		F4C193E82267A60E00200078 /* RepositoreSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193E72267A60E00200078 /* RepositoreSessionProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,10 @@
 		F4C193DA2267943800200078 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		F4C193DC2267949100200078 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		F4C193DE2267950F00200078 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		F4C193E02267A0C400200078 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		F4C193E22267A14E00200078 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		F4C193E52267A5CC00200078 /* RepositoreSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoreSession.swift; sourceTree = "<group>"; };
+		F4C193E72267A60E00200078 /* RepositoreSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoreSessionProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +188,7 @@
 		F4C193D82267939B00200078 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				F4C193E42267A5B500200078 /* Session */,
 				F4C193DE2267950F00200078 /* EndPoint.swift */,
 				F4C193D9226793AF00200078 /* Service */,
 			);
@@ -192,8 +201,19 @@
 				F4C193D6226792CE00200078 /* HTTPMethod.swift */,
 				F4C193DA2267943800200078 /* Result.swift */,
 				F4C193DC2267949100200078 /* EndPointType.swift */,
+				F4C193E02267A0C400200078 /* APIClient.swift */,
+				F4C193E22267A14E00200078 /* APIError.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		F4C193E42267A5B500200078 /* Session */ = {
+			isa = PBXGroup;
+			children = (
+				F4C193E52267A5CC00200078 /* RepositoreSession.swift */,
+				F4C193E72267A60E00200078 /* RepositoreSessionProtocol.swift */,
+			);
+			path = Session;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,11 +349,15 @@
 			files = (
 				F4C193D7226792CE00200078 /* HTTPMethod.swift in Sources */,
 				F4C193DB2267943800200078 /* Result.swift in Sources */,
+				F4C193E12267A0C400200078 /* APIClient.swift in Sources */,
 				F4C193DD2267949100200078 /* EndPointType.swift in Sources */,
 				F4C193A422678F6B00200078 /* ViewController.swift in Sources */,
 				F4C193D52267920100200078 /* ReposResult.swift in Sources */,
 				F4C193DF2267950F00200078 /* EndPoint.swift in Sources */,
 				F4C193A222678F6B00200078 /* AppDelegate.swift in Sources */,
+				F4C193E62267A5CC00200078 /* RepositoreSession.swift in Sources */,
+				F4C193E82267A60E00200078 /* RepositoreSessionProtocol.swift in Sources */,
+				F4C193E32267A14E00200078 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,3 +13,21 @@ protocol EndPointType {
     var path: String { get }
     var query: [URLQueryItem] { get }
 }
+
+extension EndPointType {
+    var components: URLComponents {
+        if var components = URLComponents(string: base){
+            components.path = path
+            components.queryItems = query
+            return components
+        }
+        fatalError("Fail to set components")
+    }
+    
+    var request: URLRequest {
+        if let url = components.url{
+            return URLRequest(url: url)
+        }
+        fatalError("Failed to set URL!")
+    }
+}
