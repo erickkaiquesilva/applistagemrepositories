@@ -10,9 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var loadRepositore = RepositoreSession()
+    
+    var page = 1;
+    var perPage = 30;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        loadRepositore.getAllRepositores(page: page, perPage: perPage) { (object) in
+            
+        }
     }
 
 

@@ -188,8 +188,8 @@
 		F4C193D82267939B00200078 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				F4C193E42267A5B500200078 /* Session */,
 				F4C193DE2267950F00200078 /* EndPoint.swift */,
+				F4C193E42267A5B500200078 /* Session */,
 				F4C193D9226793AF00200078 /* Service */,
 			);
 			path = Networking;

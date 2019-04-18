@@ -21,24 +21,22 @@ class RepositoreSession: RepositoreSessionProtocol, APIClient {
     }
     
     
-    func getAllRepositores(completion: @escaping (Result<[Repositore]?, APIError>) -> Void) {
-        let endPoint = RepositoriesEndPoint.allRepositores(2, 30)
+    func getAllRepositores(page: Int, perPage: Int, completion: @escaping (Result<[Repositore]?, APIError>) -> Void) {
+        let endPoint = RepositoriesEndPoint.allRepositores(page, perPage)
         var request = endPoint.request
         request.httpMethod = HTTPMethod.get.rawValue
         
-        fetch(with: request, decode: [Repositore], completion: <#T##(Result<Decodable, APIError>) -> Void#>)
+        fetch(with: request, decode: [Repositore].self) { (result) in
+            
+            switch result{
+            case .success(let model):
+                print(model)
+                break
+            case .failure(let error):
+                print(error)
+                break
+                
+            }
+        }
     }
-    
-    
-    func getAllBeers(completion: @escaping (Result<[BeerElement]?, APIError>) -> Void) {
-        let endPoint = BeerEndpoint.allBeers
-        var request = endPoint.request
-        request.httpMethod = HTTPMethod.get.rawValue
-        
-        fetch(with: request, decode: { json -> []? in
-            guard let beerResult = json as? [BeerElement] else { return nil }
-            return beerResult
-        }, completion: completion)
-    }
-    
 }
