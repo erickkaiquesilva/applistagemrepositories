@@ -21,18 +21,13 @@ class RepositoreSession: RepositoreSessionProtocol, APIClient {
     }
     
     
-    func getAllRepositores(page: Int, perPage: Int, completion: @escaping (Result<[Repositore]?, APIError>) -> Void) {
+    func getAllRepositores(page: Int, perPage: Int, completion: @escaping (Result<[Repositore], APIError>) -> Void) {
         let endPoint = RepositoriesEndPoint.allRepositores(page, perPage)
         var request = endPoint.request
         request.httpMethod = HTTPMethod.get.rawValue
         
         fetch(with: request, decode: [Repositore].self) { (result) in
-            switch result{
-            case .success(let model):
-                print(model)
-            case .failure(let error):
-                print(error)
-            }
+            completion(result)
         }
     }
 }

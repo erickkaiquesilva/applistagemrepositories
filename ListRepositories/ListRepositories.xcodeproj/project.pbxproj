@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F4C193A222678F6B00200078 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193A122678F6B00200078 /* AppDelegate.swift */; };
-		F4C193A422678F6B00200078 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193A322678F6B00200078 /* ViewController.swift */; };
 		F4C193A722678F6B00200078 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4C193A522678F6B00200078 /* Main.storyboard */; };
 		F4C193A922678F6D00200078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4C193A822678F6D00200078 /* Assets.xcassets */; };
 		F4C193AC22678F6D00200078 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4C193AA22678F6D00200078 /* LaunchScreen.storyboard */; };
@@ -23,6 +22,7 @@
 		F4C193E32267A14E00200078 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193E22267A14E00200078 /* APIError.swift */; };
 		F4C193E62267A5CC00200078 /* RepositoreSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193E52267A5CC00200078 /* RepositoreSession.swift */; };
 		F4C193E82267A60E00200078 /* RepositoreSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193E72267A60E00200078 /* RepositoreSessionProtocol.swift */; };
+		F4C193EB2268FAFA00200078 /* ListagemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193EA2268FAFA00200078 /* ListagemTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,6 @@
 /* Begin PBXFileReference section */
 		F4C1939E22678F6B00200078 /* ListRepositories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListRepositories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C193A122678F6B00200078 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F4C193A322678F6B00200078 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F4C193A622678F6B00200078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4C193A822678F6D00200078 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4C193AB22678F6D00200078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,6 +64,7 @@
 		F4C193E22267A14E00200078 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		F4C193E52267A5CC00200078 /* RepositoreSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoreSession.swift; sourceTree = "<group>"; };
 		F4C193E72267A60E00200078 /* RepositoreSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoreSessionProtocol.swift; sourceTree = "<group>"; };
+		F4C193EA2268FAFA00200078 /* ListagemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListagemTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +119,8 @@
 				F4C193D02267904100200078 /* controllers */,
 				F4C193CF2267903700200078 /* Data */,
 				F4C193D12267904A00200078 /* views */,
-				F4C193A322678F6B00200078 /* ViewController.swift */,
 				F4C193A122678F6B00200078 /* AppDelegate.swift */,
+				F4C193EA2268FAFA00200078 /* ListagemTableViewController.swift */,
 				F4C193A822678F6D00200078 /* Assets.xcassets */,
 				F4C193AA22678F6D00200078 /* LaunchScreen.storyboard */,
 				F4C193AD22678F6D00200078 /* Info.plist */,
@@ -351,7 +351,7 @@
 				F4C193DB2267943800200078 /* Result.swift in Sources */,
 				F4C193E12267A0C400200078 /* APIClient.swift in Sources */,
 				F4C193DD2267949100200078 /* EndPointType.swift in Sources */,
-				F4C193A422678F6B00200078 /* ViewController.swift in Sources */,
+				F4C193EB2268FAFA00200078 /* ListagemTableViewController.swift in Sources */,
 				F4C193D52267920100200078 /* ReposResult.swift in Sources */,
 				F4C193DF2267950F00200078 /* EndPoint.swift in Sources */,
 				F4C193A222678F6B00200078 /* AppDelegate.swift in Sources */,

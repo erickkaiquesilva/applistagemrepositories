@@ -46,7 +46,7 @@ extension APIClient {
             }
             
             guard let model = self.decodingTask(data: data, to: decode) else {
-                completion(Result.failure(APIError.jsonConversionFailure(description: "Error Parcial")))
+                completion(.failure(APIError.jsonConversionFailure(description: "Error Parcial")))
                 return
             }
             
