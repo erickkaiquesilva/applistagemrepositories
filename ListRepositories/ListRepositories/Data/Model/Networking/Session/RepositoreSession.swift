@@ -27,15 +27,11 @@ class RepositoreSession: RepositoreSessionProtocol, APIClient {
         request.httpMethod = HTTPMethod.get.rawValue
         
         fetch(with: request, decode: [Repositore].self) { (result) in
-            
             switch result{
             case .success(let model):
                 print(model)
-                break
             case .failure(let error):
                 print(error)
-                break
-                
             }
         }
     }

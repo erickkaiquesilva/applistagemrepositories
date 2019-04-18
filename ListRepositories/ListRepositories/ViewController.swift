@@ -12,15 +12,23 @@ class ViewController: UIViewController {
 
     var loadRepositore = RepositoreSession()
     
+    var listRepos: [Repositore] = []
     var page = 1;
     var perPage = 30;
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         loadRepositore.getAllRepositores(page: page, perPage: perPage) { (object) in
-            
+            switch object{
+                case .success(let model):
+                    self.listRepos = model!
+                    print(model!)
+                case .failure(let error):
+                    print(error)
+            }
         }
+        
     }
 
 

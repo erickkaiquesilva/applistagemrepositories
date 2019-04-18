@@ -53,6 +53,7 @@ extension APIClient {
             completion(.success(model))
             
         }
+        print(task)
         task.resume()
         
     }
