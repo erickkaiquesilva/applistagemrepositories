@@ -21,12 +21,12 @@ class RepositoreSession: RepositoreSessionProtocol, APIClient {
     }
     
     
-    func getAllRepositores(page: Int, perPage: Int, completion: @escaping (Result<[Repositore], APIError>) -> Void) {
+    func getAllRepositores(page: Int, perPage: Int, completion: @escaping (Result<List, APIError>) -> Void) {
         let endPoint = RepositoriesEndPoint.allRepositores(page, perPage)
         var request = endPoint.request
         request.httpMethod = HTTPMethod.get.rawValue
         
-        fetch(with: request, decode: [Repositore].self) { (result) in
+        fetch(with: request, decode: List.self) { (result) in
             completion(result)
         }
     }

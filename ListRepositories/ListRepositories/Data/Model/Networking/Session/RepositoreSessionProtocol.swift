@@ -9,5 +9,5 @@
 import Foundation
 
 protocol RepositoreSessionProtocol {
-    func getAllRepositores(page: Int, perPage: Int, completion: @escaping (Result<[Repositore], APIError>) -> Void)
+    func getAllRepositores(page: Int, perPage: Int, completion: @escaping (Result<List, APIError>) -> Void)
 }

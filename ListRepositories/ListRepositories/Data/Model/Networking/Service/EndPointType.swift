@@ -19,6 +19,7 @@ extension EndPointType {
         if var components = URLComponents(string: base){
             components.path = path
             components.queryItems = query
+            print(components)
             return components
         }
         fatalError("Fail to set components")

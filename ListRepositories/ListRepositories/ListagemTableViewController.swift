@@ -12,17 +12,25 @@ class ListagemTableViewController: UITableViewController {
     
     let loadRepositore: RepositoreSessionProtocol = RepositoreSession()
     
-    var listRepos: [Repositore] = []
+    var listRepositore: [Repositore] = []{
+        didSet{
+            tableView.reloadData()
+        }
+    }
+    
     let label = UILabel()
     var page = 1;
     var perPage = 30;
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        label.textAlignment = .center
+        label.text = "OPS!!! nada encontrado"
+        
         loadRepositore.getAllRepositores(page: page, perPage: perPage) { (object) in
             switch object{
             case .success(let model):
-                
+                self.listRepositore = model.items
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -37,14 +45,17 @@ class ListagemTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = listRepos.count
+        let count = listRepositore.count
         tableView.backgroundView = count == 0 ? label : nil
         return count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let row = indexPath.row
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RepositoreTableViewCell
+        let item = self.listRepositore[row]
+        cell.prepare(from: item)
+        
         return cell
     }
 

@@ -13,7 +13,6 @@ protocol APIClient {
     func fetch<T: Decodable>(with request: URLRequest, decode: T.Type, completion: @escaping (Result<T, APIError>) -> Void)
 }
 
-
 extension APIClient {
     
     
@@ -21,7 +20,8 @@ extension APIClient {
         do {
             let genericModel = try JSONDecoder().decode(T.self, from: data)
             return genericModel
-        } catch {
+        } catch let err{
+            print(err.localizedDescription)
             return nil
         }
         
@@ -53,7 +53,6 @@ extension APIClient {
             completion(.success(model))
             
         }
-        print(task)
         task.resume()
         
     }

@@ -37,7 +37,7 @@ extension RepositoriesEndPoint: EndPointType{
     var path: String {
         switch self {
         case .allRepositores:
-            return "/search/repositories?"
+            return "/search/repositories"
         }
     }
     
