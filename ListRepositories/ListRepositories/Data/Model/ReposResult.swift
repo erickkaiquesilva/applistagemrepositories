@@ -14,8 +14,16 @@ struct List: Codable {
 }
 
 struct Repositore: Codable {
-    let full_name: String
-    let stargazers_count: Int
+    
+    enum CodingKeys: String, CodingKey{
+        case fullName = "full_name"
+        case stargazersCount = "stargazers_count"
+        case owner
+    }
+    
+    var isSelected: Bool = false
+    let fullName: String
+    let stargazersCount: Int
     let owner: User
 }
 

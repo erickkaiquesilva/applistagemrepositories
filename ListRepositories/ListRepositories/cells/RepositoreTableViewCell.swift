@@ -26,9 +26,12 @@ class RepositoreTableViewCell: UITableViewCell {
     
     func prepare(from repositore: Repositore){
         imageUser.setImage(from: repositore.owner.avatar_url)
-        nameRepositore.text = repositore.full_name
+        nameRepositore.text = repositore.fullName
         nameUser.text = repositore.owner.login
-        countStarsRepositore.text = String(repositore.stargazers_count)
+        countStarsRepositore.text = String(repositore.stargazersCount)
+        
+        accessoryType = repositore.isSelected ? .checkmark : .none
+        
     }
 
 }

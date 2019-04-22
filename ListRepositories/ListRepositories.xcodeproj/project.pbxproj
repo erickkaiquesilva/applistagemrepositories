@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		F45BB922226E179800AC0390 /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BB921226E179800AC0390 /* UIImage+Utils.swift */; };
 		F45BB924226E18A000AC0390 /* RepositoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BB923226E18A000AC0390 /* RepositoreTableViewCell.swift */; };
+		F45BB94E226E32EC00AC0390 /* RepositoresLocal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F45BB94C226E32EC00AC0390 /* RepositoresLocal.xcdatamodeld */; };
+		F45BB950226E362900AC0390 /* TableView+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BB94F226E362900AC0390 /* TableView+CoreData.swift */; };
+		F45BB952226E3C7E00AC0390 /* RepositoresManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BB951226E3C7E00AC0390 /* RepositoresManager.swift */; };
+		F45BB956226E4D5300AC0390 /* RepositoresLocalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BB955226E4D5300AC0390 /* RepositoresLocalTableViewController.swift */; };
 		F4C193A222678F6B00200078 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193A122678F6B00200078 /* AppDelegate.swift */; };
 		F4C193A722678F6B00200078 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4C193A522678F6B00200078 /* Main.storyboard */; };
 		F4C193A922678F6D00200078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4C193A822678F6D00200078 /* Assets.xcassets */; };
@@ -26,6 +30,18 @@
 		F4C193E82267A60E00200078 /* RepositoreSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193E72267A60E00200078 /* RepositoreSessionProtocol.swift */; };
 		F4C193EB2268FAFA00200078 /* ListagemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193EA2268FAFA00200078 /* ListagemTableViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		F45BB925226E2ED800AC0390 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = wrapper.xcmappingmodel;
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# mapc\n";
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
 		F4C193B322678F6D00200078 /* PBXContainerItemProxy */ = {
@@ -47,6 +63,10 @@
 /* Begin PBXFileReference section */
 		F45BB921226E179800AC0390 /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		F45BB923226E18A000AC0390 /* RepositoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoreTableViewCell.swift; sourceTree = "<group>"; };
+		F45BB94D226E32EC00AC0390 /* RepositoresLocal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RepositoresLocal.xcdatamodel; sourceTree = "<group>"; };
+		F45BB94F226E362900AC0390 /* TableView+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+CoreData.swift"; sourceTree = "<group>"; };
+		F45BB951226E3C7E00AC0390 /* RepositoresManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoresManager.swift; sourceTree = "<group>"; };
+		F45BB955226E4D5300AC0390 /* RepositoresLocalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoresLocalTableViewController.swift; sourceTree = "<group>"; };
 		F4C1939E22678F6B00200078 /* ListRepositories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListRepositories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C193A122678F6B00200078 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4C193A622678F6B00200078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -100,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				F45BB921226E179800AC0390 /* UIImage+Utils.swift */,
+				F45BB94F226E362900AC0390 /* TableView+CoreData.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -130,13 +151,13 @@
 				F45BB920226E176900AC0390 /* extension */,
 				F4C193D22267905400200078 /* cells */,
 				F4C193D02267904100200078 /* controllers */,
+				F4C193D82267939B00200078 /* Networking */,
 				F4C193CF2267903700200078 /* Data */,
 				F4C193D12267904A00200078 /* views */,
 				F4C193A122678F6B00200078 /* AppDelegate.swift */,
-				F4C193EA2268FAFA00200078 /* ListagemTableViewController.swift */,
 				F4C193A822678F6D00200078 /* Assets.xcassets */,
-				F4C193AA22678F6D00200078 /* LaunchScreen.storyboard */,
 				F4C193AD22678F6D00200078 /* Info.plist */,
+				F45BB94C226E32EC00AC0390 /* RepositoresLocal.xcdatamodeld */,
 			);
 			path = ListRepositories;
 			sourceTree = "<group>";
@@ -170,6 +191,8 @@
 		F4C193D02267904100200078 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F4C193EA2268FAFA00200078 /* ListagemTableViewController.swift */,
+				F45BB955226E4D5300AC0390 /* RepositoresLocalTableViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -178,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				F4C193A522678F6B00200078 /* Main.storyboard */,
+				F4C193AA22678F6D00200078 /* LaunchScreen.storyboard */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -193,7 +217,7 @@
 		F4C193D32267919200200078 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F4C193D82267939B00200078 /* Networking */,
+				F45BB951226E3C7E00AC0390 /* RepositoresManager.swift */,
 				F4C193D42267920100200078 /* ReposResult.swift */,
 			);
 			path = Model;
@@ -242,6 +266,7 @@
 				F4C1939C22678F6B00200078 /* Resources */,
 			);
 			buildRules = (
+				F45BB925226E2ED800AC0390 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -362,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4C193D7226792CE00200078 /* HTTPMethod.swift in Sources */,
+				F45BB956226E4D5300AC0390 /* RepositoresLocalTableViewController.swift in Sources */,
 				F4C193DB2267943800200078 /* Result.swift in Sources */,
 				F4C193E12267A0C400200078 /* APIClient.swift in Sources */,
 				F4C193DD2267949100200078 /* EndPointType.swift in Sources */,
@@ -371,7 +397,10 @@
 				F4C193DF2267950F00200078 /* EndPoint.swift in Sources */,
 				F4C193A222678F6B00200078 /* AppDelegate.swift in Sources */,
 				F4C193E62267A5CC00200078 /* RepositoreSession.swift in Sources */,
+				F45BB950226E362900AC0390 /* TableView+CoreData.swift in Sources */,
 				F4C193E82267A60E00200078 /* RepositoreSessionProtocol.swift in Sources */,
+				F45BB94E226E32EC00AC0390 /* RepositoresLocal.xcdatamodeld in Sources */,
+				F45BB952226E3C7E00AC0390 /* RepositoresManager.swift in Sources */,
 				F4C193E32267A14E00200078 /* APIError.swift in Sources */,
 				F45BB922226E179800AC0390 /* UIImage+Utils.swift in Sources */,
 			);
@@ -698,6 +727,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F45BB94C226E32EC00AC0390 /* RepositoresLocal.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F45BB94D226E32EC00AC0390 /* RepositoresLocal.xcdatamodel */,
+			);
+			currentVersion = F45BB94D226E32EC00AC0390 /* RepositoresLocal.xcdatamodel */;
+			path = RepositoresLocal.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F4C1939622678F6B00200078 /* Project object */;
 }

@@ -1,63 +1,47 @@
 //
-//  ListagemTableViewController.swift
+//  RepositoresLocalTableViewController.swift
 //  ListRepositories
 //
-//  Created by Erick Kaique da Silva on 18/04/2019.
+//  Created by Erick Kaique da Silva on 22/04/2019.
 //  Copyright © 2019 Erick Kaique da Silva. All rights reserved.
 //
 
 import UIKit
 
-class ListagemTableViewController: UITableViewController {
+class RepositoresLocalTableViewController: UITableViewController {
     
-    let loadRepositore: RepositoreSessionProtocol = RepositoreSession()
     
-    var listRepositore: [Repositore] = []{
-        didSet{
-            tableView.reloadData()
-        }
-    }
-    
-    let label = UILabel()
-    var page = 1;
-    var perPage = 30;
+    var label = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        label.textAlignment = .center
-        label.text = "OPS!!! nada encontrado"
         
-        loadRepositore.getAllRepositores(page: page, perPage: perPage) { (object) in
-            switch object{
-            case .success(let model):
-                self.listRepositore = model.items
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                print(model)
-            case .failure(let error):
-                print(error)
-            }
-        }
+        label.text = "OPS!!! Nao encontramos nada"
+        label.textAlignment = .center
         
     }
 
     // MARK: - Table view data source
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = listRepositore.count
-        tableView.backgroundView = count == 0 ? label : nil
-        return count
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
 
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 0
+    }
+
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = indexPath.row
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RepositoreTableViewCell
-        let item = self.listRepositore[row]
-        cell.prepare(from: item)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
         return cell
     }
+    */
 
     /*
     // Override to support conditional editing of the table view.
