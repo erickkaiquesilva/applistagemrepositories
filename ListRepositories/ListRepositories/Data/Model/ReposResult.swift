@@ -16,11 +16,12 @@ struct List: Codable {
 struct Repositore: Codable {
     
     enum CodingKeys: String, CodingKey{
+        case id
         case fullName = "full_name"
         case stargazersCount = "stargazers_count"
         case owner
     }
-    
+    let id: Int
     var isSelected: Bool = false
     let fullName: String
     let stargazersCount: Int

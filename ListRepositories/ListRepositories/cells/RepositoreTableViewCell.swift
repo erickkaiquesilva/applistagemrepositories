@@ -15,6 +15,8 @@ class RepositoreTableViewCell: UITableViewCell {
     @IBOutlet weak var nameUser: UILabel!
     @IBOutlet weak var countStarsRepositore: UILabel!
     
+    var repositores: Repositores!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

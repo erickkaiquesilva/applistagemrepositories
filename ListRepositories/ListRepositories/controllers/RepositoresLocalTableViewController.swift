@@ -16,6 +16,8 @@ class RepositoresLocalTableViewController: UITableViewController {
     
     var fechedResultsController: NSFetchedResultsController<Repositores>!
     
+    var repositoresRequest: Repositore!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,6 +40,14 @@ class RepositoresLocalTableViewController: UITableViewController {
         } catch {
             print(error.localizedDescription)
         }
+        
+        let resultCollectionLocal = fechedResultsController.fetchedObjects?.map { (elementOfCollection) -> Int in
+            
+            let id = elementOfCollection.idUser
+            
+            return Int(id)
+        }
+        
     }
     
     // MARK: - Table view data source

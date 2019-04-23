@@ -13,9 +13,14 @@ class ListagemTableViewController: UITableViewController {
     
     let loadRepositore: RepositoreSessionProtocol = RepositoreSession()
     
+    let comparador = Comparador()
+    
+    let repositoreManager = RepositoresManager.shared
+    
     var listRepositore: [Repositore] = []
     
     var repositores: Repositores!
+    
     
     let label = UILabel()
     var page = 1;
@@ -31,6 +36,8 @@ class ListagemTableViewController: UITableViewController {
             case .success(let model):
                 self.listRepositore = model.items
                 DispatchQueue.main.async {
+                    self.comparador.comparar(repositoreRequest: model.items,
+                                             repositoreLocal: self.repositoresLocal())
                     self.tableView.reloadData()
                 }
                 print(model)
@@ -39,6 +46,11 @@ class ListagemTableViewController: UITableViewController {
             }
         }
         addRefreshControl()
+    }
+    
+    func repositoresLocal() -> [Repositores]{
+        repositoreManager.loadRepositores(with: context)
+        return repositoresLocal()
     }
     
     func addRefreshControl(){
@@ -86,7 +98,8 @@ class ListagemTableViewController: UITableViewController {
             }
             
             let item = listRepositore[row]
-            
+            repositores.idUser = Int64(item.id)
+            repositores.isSelected = item.isSelected
             repositores.fullName = item.fullName
             repositores.login = item.owner.login
             
