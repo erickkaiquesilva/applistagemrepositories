@@ -13,6 +13,7 @@
 		F45BB950226E362900AC0390 /* TableView+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BB94F226E362900AC0390 /* TableView+CoreData.swift */; };
 		F45BB952226E3C7E00AC0390 /* RepositoresManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BB951226E3C7E00AC0390 /* RepositoresManager.swift */; };
 		F45BB956226E4D5300AC0390 /* RepositoresLocalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BB955226E4D5300AC0390 /* RepositoresLocalTableViewController.swift */; };
+		F45BB958226F49E100AC0390 /* RepositoresLocalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BB957226F49E100AC0390 /* RepositoresLocalTableViewCell.swift */; };
 		F4C193A222678F6B00200078 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C193A122678F6B00200078 /* AppDelegate.swift */; };
 		F4C193A722678F6B00200078 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4C193A522678F6B00200078 /* Main.storyboard */; };
 		F4C193A922678F6D00200078 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4C193A822678F6D00200078 /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		F45BB94F226E362900AC0390 /* TableView+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+CoreData.swift"; sourceTree = "<group>"; };
 		F45BB951226E3C7E00AC0390 /* RepositoresManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoresManager.swift; sourceTree = "<group>"; };
 		F45BB955226E4D5300AC0390 /* RepositoresLocalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoresLocalTableViewController.swift; sourceTree = "<group>"; };
+		F45BB957226F49E100AC0390 /* RepositoresLocalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoresLocalTableViewCell.swift; sourceTree = "<group>"; };
 		F4C1939E22678F6B00200078 /* ListRepositories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListRepositories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C193A122678F6B00200078 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4C193A622678F6B00200078 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				F45BB923226E18A000AC0390 /* RepositoreTableViewCell.swift */,
+				F45BB957226F49E100AC0390 /* RepositoresLocalTableViewCell.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				F4C193EB2268FAFA00200078 /* ListagemTableViewController.swift in Sources */,
 				F4C193D52267920100200078 /* ReposResult.swift in Sources */,
 				F4C193DF2267950F00200078 /* EndPoint.swift in Sources */,
+				F45BB958226F49E100AC0390 /* RepositoresLocalTableViewCell.swift in Sources */,
 				F4C193A222678F6B00200078 /* AppDelegate.swift in Sources */,
 				F4C193E62267A5CC00200078 /* RepositoreSession.swift in Sources */,
 				F45BB950226E362900AC0390 /* TableView+CoreData.swift in Sources */,

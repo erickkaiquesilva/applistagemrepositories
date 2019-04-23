@@ -93,7 +93,7 @@
         <!--Favoritos-->
         <scene sceneID="i42-yJ-tLN">
             <objects>
-                <tableViewController id="8NM-PZ-RAN" sceneMemberID="viewController">
+                <tableViewController id="8NM-PZ-RAN" customClass="RepositoresLocalTableViewController" customModule="ListRepositories" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="itD-Ff-ulP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -104,7 +104,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="120" id="Yuf-1F-kdr">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="120" id="Yuf-1F-kdr" customClass="RepositoresLocalTableViewCell" customModule="ListRepositories" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yuf-1F-kdr" id="4kv-rw-iXv">
@@ -151,6 +151,12 @@
                                         <constraint firstItem="qNl-Bc-tN4" firstAttribute="top" secondItem="ubr-4A-eSo" secondAttribute="bottom" constant="10" id="zu6-hr-sTz"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imageRepositore" destination="dey-n5-Mf9" id="lqB-9G-fCm"/>
+                                    <outlet property="nameRepositore" destination="ubr-4A-eSo" id="n2b-D5-eEV"/>
+                                    <outlet property="nameUser" destination="qNl-Bc-tN4" id="Ice-Kf-B8R"/>
+                                    <outlet property="starsRepositore" destination="CnV-YA-fxg" id="cWa-fm-gJ8"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
