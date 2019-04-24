@@ -73,7 +73,6 @@ class ListagemTableViewController: UITableViewController {
     }
     
     func addRefreshControl(){
-        
         refreshControl = UIRefreshControl()
         refreshControl?.tintColor = UIColor.red
         refreshControl?.addTarget(self, action: #selector(refreshList), for: .valueChanged)
@@ -90,6 +89,7 @@ class ListagemTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = listRepositore.count
         tableView.backgroundView = count == 0 ? label : nil
+
         return count
     }
 
@@ -117,12 +117,13 @@ class ListagemTableViewController: UITableViewController {
             }
             
             let item = listRepositore[row]
+            
             repositores.idUser = Int64(item.id)
             repositores.isSelected = item.isSelected
             repositores.fullName = item.fullName
             repositores.login = item.owner.login
             repositores.image = item.owner.avatar_url
-            
+    
             do {
                 try context.save()
             } catch {
