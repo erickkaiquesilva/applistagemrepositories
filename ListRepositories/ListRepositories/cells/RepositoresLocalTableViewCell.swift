@@ -30,6 +30,7 @@ class RepositoresLocalTableViewCell: UITableViewCell {
     func prepare(with repositore: Repositores){
         nameRepositore.text = repositore.fullName
         nameUser.text = repositore.login
+        imageRepositore.setImage(from: repositore.image)
     }
 
 }

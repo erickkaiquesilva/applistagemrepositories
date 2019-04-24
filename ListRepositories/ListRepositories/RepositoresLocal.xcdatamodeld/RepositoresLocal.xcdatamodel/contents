@@ -3,10 +3,11 @@
     <entity name="Repositores" representedClassName="Repositores" syncable="YES" codeGenerationType="class">
         <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="idUser" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isSelected" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="login" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Repositores" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="Repositores" positionX="-54" positionY="-9" width="128" height="120"/>
     </elements>
 </model>

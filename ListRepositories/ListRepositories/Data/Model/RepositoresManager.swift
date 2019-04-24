@@ -23,6 +23,18 @@ class RepositoresManager{
         }
     }
     
+    func deleteRepositore(index: Int, context: NSManagedObjectContext){
+        
+        let repositore = repositores[index]
+        context.delete(repositore)
+        
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     private init(){
         
     }

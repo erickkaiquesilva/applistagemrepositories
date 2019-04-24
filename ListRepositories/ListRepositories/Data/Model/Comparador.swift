@@ -21,24 +21,6 @@ class Comparador{
             }
             return repoResponse
         }
-        
-//        let idUserRequest = repositoreRequest.map({ $0.id })
-//
-//        let idUserLocal = repositoreLocal.map { (repositoreLocal) -> Int in
-//            Int(repositoreLocal.idUser)
-//        }
-//
-//        for idLocal in idUserLocal{
-//            print(idLocal)
-//        }
-//
-//
-//
-//        print("----------------------------------------")
-//
-//        for idRequest in idUserRequest{
-//            print(idRequest)
-//        }
     }
     
 }

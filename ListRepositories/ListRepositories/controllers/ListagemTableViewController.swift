@@ -15,7 +15,7 @@ class ListagemTableViewController: UITableViewController {
     
     let comparador = Comparador()
     
-    let repositoreManager = RepositoresManager.shared
+    var fechedResultController: NSFetchedResultsController<Repositores>!
     
     var listRepositore: [Repositore] = []
     
@@ -34,10 +34,9 @@ class ListagemTableViewController: UITableViewController {
         loadRepositore.getAllRepositores(page: page, perPage: perPage) { (object) in
             switch object{
             case .success(let model):
-                self.listRepositore = model.items
+                self.listRepositore = self.comparador.comparar(repositoreRequest: model.items, repositoreLocal: self.repositoresLocal())
+                print(self.repositoresLocal())
                 DispatchQueue.main.async {
-                    self.comparador.comparar(repositoreRequest: model.items,
-                                             repositoreLocal: self.repositoresLocal())
                     self.tableView.reloadData()
                 }
                 print(model)
@@ -49,8 +48,28 @@ class ListagemTableViewController: UITableViewController {
     }
     
     func repositoresLocal() -> [Repositores]{
-        repositoreManager.loadRepositores(with: context)
-        return repositoresLocal()
+        
+        let fetchRequest: NSFetchRequest<Repositores> = Repositores.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "fullName", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fechedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        fechedResultController.delegate = self
+        
+        do {
+            try fechedResultController.performFetch()
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        var repositoreLocal: [Repositores] = []
+        
+        for itemsLocal in fechedResultController!.fetchedObjects!{
+            repositoreLocal.append(itemsLocal)
+        }
+        
+        return repositoreLocal
     }
     
     func addRefreshControl(){
@@ -102,6 +121,7 @@ class ListagemTableViewController: UITableViewController {
             repositores.isSelected = item.isSelected
             repositores.fullName = item.fullName
             repositores.login = item.owner.login
+            repositores.image = item.owner.avatar_url
             
             do {
                 try context.save()
@@ -111,4 +131,16 @@ class ListagemTableViewController: UITableViewController {
         }
     }
     
+}
+
+extension ListagemTableViewController: NSFetchedResultsControllerDelegate{
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .delete:
+            break
+        default:
+            tableView.reloadData()
+        }
+    }
 }

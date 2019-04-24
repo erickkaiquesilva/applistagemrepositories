@@ -74,7 +74,22 @@ class RepositoresLocalTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120;
     }
-
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete{
+            guard let repositorieDelete = fechedResultsController.fetchedObjects?[indexPath.row] else{ return }
+            
+            context.delete(repositorieDelete)
+            
+            do {
+                try context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
 }
 
 extension RepositoresLocalTableViewController: NSFetchedResultsControllerDelegate{
@@ -82,6 +97,9 @@ extension RepositoresLocalTableViewController: NSFetchedResultsControllerDelegat
         
         switch type {
         case .delete:
+            if let indexPath = indexPath{
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
             break
         default:
             tableView.reloadData()
