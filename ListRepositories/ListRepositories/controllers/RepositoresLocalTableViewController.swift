@@ -19,18 +19,12 @@ class RepositoresLocalTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        label.text = "OPS!!! Nao existe lista de Favoritos ainda \n para voce"
+        label.text = "OPS!!! Nao existe lista de Favoritos ainda"
         label.textAlignment = .center
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        loadRepositores()
-        tableView.reloadData()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
         loadRepositores()
         tableView.reloadData()
     }
@@ -66,6 +60,7 @@ class RepositoresLocalTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
             
             let repositorieDelete = repos[indexPath.row]
+            
             context.delete(repositorieDelete)
             
             do {
@@ -73,6 +68,7 @@ class RepositoresLocalTableViewController: UITableViewController {
             } catch {
                 print(error.localizedDescription)
             }
+            
         }
     }
     

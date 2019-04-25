@@ -24,7 +24,7 @@ class ListagemTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         label.textAlignment = .center
-        label.text = "OPS!!! nada encontrado"
+        label.text = "Carregando Repositorios..."
         
         loadRepositore.getAllRepositores(page: page, perPage: perPage) { (object) in
             switch object{
@@ -104,6 +104,28 @@ class ListagemTableViewController: UITableViewController {
             let createRepoLocal = RepoLocal()
             createRepoLocal.RepositoreLocal(repositoreRequest: item)
             
+        }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == reposRequest.count - 15 {
+            page += 1
+            perPage += 30
+            
+            loadRepositore.getAllRepositores(page: page, perPage: perPage) { (object) in
+                switch object{
+                case .success(let model):
+                    self.reposRequest = self.comparador.comparar(repositoreRequest: model.items, repositoreLocal: self.repositoresLocal())
+                    print(self.repositoresLocal())
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                    print(model)
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }
     }
     
