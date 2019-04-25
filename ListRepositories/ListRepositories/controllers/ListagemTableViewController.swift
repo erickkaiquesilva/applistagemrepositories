@@ -25,7 +25,11 @@ class ListagemTableViewController: UITableViewController {
         super.viewDidLoad()
         label.textAlignment = .center
         label.text = "Carregando Repositorios..."
-        
+        loadRepositoresRequest()
+        addRefreshControl()
+    }
+    
+    func loadRepositoresRequest(){
         loadRepositore.getAllRepositores(page: page, perPage: perPage) { (object) in
             switch object{
             case .success(let model):
@@ -39,7 +43,6 @@ class ListagemTableViewController: UITableViewController {
                 print(error)
             }
         }
-        addRefreshControl()
     }
     
     func repositoresLocal() -> [Repositores]{
