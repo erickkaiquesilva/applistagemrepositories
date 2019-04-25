@@ -11,62 +11,46 @@ import CoreData
 
 class RepositoresLocalTableViewController: UITableViewController {
     
+    lazy var label = UILabel()
+    var repos: [Repositores] = []
     
-    var label = UILabel()
-    
-    var fechedResultsController: NSFetchedResultsController<Repositores>!
-    
-    var repositoresRequest: Repositore!
+    let reposManager = RepositoresManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        label.text = "OPS!!! Nao encontramos nada"
+        label.text = "OPS!!! Nao existe lista de Favoritos ainda \n para voce"
         label.textAlignment = .center
-        loadRepositores()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadRepositores()
+        tableView.reloadData()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        loadRepositores()
+        tableView.reloadData()
+    }
+    
     func loadRepositores(){
-        let fetchRequest: NSFetchRequest<Repositores> = Repositores.fetchRequest()
-        let sortDescritor = NSSortDescriptor(key: "fullName", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescritor]
-        
-        fechedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        
-        fechedResultsController.delegate = self
-        
-        do {
-            try fechedResultsController.performFetch()
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-        let resultCollectionLocal = fechedResultsController.fetchedObjects?.map { (elementOfCollection) -> Int in
-            
-            let id = elementOfCollection.idUser
-            
-            return Int(id)
-        }
-        
+        reposManager.loadRepositores(with: context)
+        repos = reposManager.repositores
     }
     
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        let count = fechedResultsController.fetchedObjects?.count ?? 0
+        let count = repos.count
         tableView.backgroundView = count == 0 ? label : nil
         return count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RepositoresLocalTableViewCell
-        
-        guard let repositore = fechedResultsController.fetchedObjects?[indexPath.row] else {
-            return cell
-        }
-        
-        cell.prepare(with: repositore)
+        cell.prepare(with: repos[indexPath.row])
 
         return cell
     }
@@ -76,10 +60,12 @@ class RepositoresLocalTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
         if editingStyle == .delete{
-            guard let repositorieDelete = fechedResultsController.fetchedObjects?[indexPath.row] else{ return }
             
+            repos.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+            
+            let repositorieDelete = repos[indexPath.row]
             context.delete(repositorieDelete)
             
             do {
@@ -90,19 +76,4 @@ class RepositoresLocalTableViewController: UITableViewController {
         }
     }
     
-}
-
-extension RepositoresLocalTableViewController: NSFetchedResultsControllerDelegate{
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
-        switch type {
-        case .delete:
-            if let indexPath = indexPath{
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-            break
-        default:
-            tableView.reloadData()
-        }
-    }
 }

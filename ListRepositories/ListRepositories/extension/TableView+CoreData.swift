@@ -16,3 +16,10 @@ extension UITableViewController{
         return appDelegate.persistentContainer.viewContext
     }
 }
+
+extension RepoLocal{
+    var context: NSManagedObjectContext{
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
+}

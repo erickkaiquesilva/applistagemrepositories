@@ -33,7 +33,6 @@ class RepositoreTableViewCell: UITableViewCell {
         countStarsRepositore.text = String(repositore.stargazersCount)
         
         accessoryType = repositore.isSelected ? .checkmark : .none
-        
     }
-
+    
 }

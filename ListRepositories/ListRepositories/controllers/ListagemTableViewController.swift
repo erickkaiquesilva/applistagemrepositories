@@ -12,14 +12,9 @@ import CoreData
 class ListagemTableViewController: UITableViewController {
     
     let loadRepositore: RepositoreSessionProtocol = RepositoreSession()
-    
     let comparador = Comparador()
-    
-    var fechedResultController: NSFetchedResultsController<Repositores>!
-    
-    var listRepositore: [Repositore] = []
-    
-    var repositores: Repositores!
+    var reposLocal: [Repositores] = []
+    var reposRequest: [Repositore] = []
     
     
     let label = UILabel()
@@ -34,7 +29,7 @@ class ListagemTableViewController: UITableViewController {
         loadRepositore.getAllRepositores(page: page, perPage: perPage) { (object) in
             switch object{
             case .success(let model):
-                self.listRepositore = self.comparador.comparar(repositoreRequest: model.items, repositoreLocal: self.repositoresLocal())
+                self.reposRequest = self.comparador.comparar(repositoreRequest: model.items, repositoreLocal: self.repositoresLocal())
                 print(self.repositoresLocal())
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -49,23 +44,13 @@ class ListagemTableViewController: UITableViewController {
     
     func repositoresLocal() -> [Repositores]{
         
-        let fetchRequest: NSFetchRequest<Repositores> = Repositores.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "fullName", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        fechedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        
-        fechedResultController.delegate = self
-        
-        do {
-            try fechedResultController.performFetch()
-        } catch {
-            print(error.localizedDescription)
-        }
+        let repoManager = RepositoresManager.shared
+        repoManager.loadRepositores(with: context)
+        reposLocal = repoManager.repositores
         
         var repositoreLocal: [Repositores] = []
         
-        for itemsLocal in fechedResultController!.fetchedObjects!{
+        for itemsLocal in reposLocal{
             repositoreLocal.append(itemsLocal)
         }
         
@@ -87,7 +72,7 @@ class ListagemTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = listRepositore.count
+        let count = reposRequest.count
         tableView.backgroundView = count == 0 ? label : nil
 
         return count
@@ -96,7 +81,7 @@ class ListagemTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RepositoreTableViewCell
-        let item = self.listRepositore[row]
+        let item = self.reposRequest[row]
         cell.prepare(from: item)
         
         return cell
@@ -107,41 +92,19 @@ class ListagemTableViewController: UITableViewController {
         
         let row = indexPath.row
         
-        listRepositore[row].isSelected.toggle()
+        reposRequest[row].isSelected.toggle()
+
+        
         tableView.reloadData()
         
-        if listRepositore[row].isSelected == true{
+        if reposRequest[row].isSelected == true{
             
-            if repositores == nil{
-                repositores = Repositores(context: context)
-            }
+            let item = reposRequest[row]
             
-            let item = listRepositore[row]
+            let createRepoLocal = RepoLocal()
+            createRepoLocal.RepositoreLocal(repositoreRequest: item)
             
-            repositores.idUser = Int64(item.id)
-            repositores.isSelected = item.isSelected
-            repositores.fullName = item.fullName
-            repositores.login = item.owner.login
-            repositores.image = item.owner.avatar_url
-    
-            do {
-                try context.save()
-            } catch {
-                print(error.localizedDescription)
-            }
         }
     }
     
-}
-
-extension ListagemTableViewController: NSFetchedResultsControllerDelegate{
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
-        switch type {
-        case .delete:
-            break
-        default:
-            tableView.reloadData()
-        }
-    }
 }
