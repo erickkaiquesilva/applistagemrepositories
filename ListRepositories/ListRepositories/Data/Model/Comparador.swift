@@ -9,16 +9,18 @@
 import Foundation
 
 class Comparador{
-    
     func comparar(repositoreRequest: [Repositore], repositoreLocal: [Repositores]) -> [Repositore]{
         return repositoreRequest.map { (repoResponse) in
             var repoResponse = repoResponse
+            repoResponse.isSelected = false
             for repoLocal in repositoreLocal {
-                repoResponse.isSelected = Int(repoLocal.idUser) == repoResponse.id
+                if Int(repoLocal.idUser) == repoResponse.id{
+                    repoResponse.isSelected = true
+                    break
+                }
             }
             return repoResponse
         }
     }
-    
 }
 

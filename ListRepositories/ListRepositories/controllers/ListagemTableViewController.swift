@@ -31,8 +31,7 @@ class ListagemTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.reposRequest = self.comparador.comparar(repositoreRequest: reposRequest, repositoreLocal: self.repositoresLocal())
-        print(reposRequest)
+        reposRequest = comparador.comparar(repositoreRequest: reposRequest, repositoreLocal: self.repositoresLocal())
         tableView.reloadData()
     }
     
@@ -116,6 +115,8 @@ class ListagemTableViewController: UITableViewController {
             createRepoLocal.RepositoreLocal(repositoreRequest: item)
             tableView.reloadData()
         }
+        
+        
     }
     
     
@@ -131,6 +132,8 @@ class ListagemTableViewController: UITableViewController {
                     print(self.repositoresLocal())
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
+                        print("----------------------------")
+                        print("Page",self.page,"PerPage",self.perPage)
                     }
                     print(model)
                 case .failure(let error):

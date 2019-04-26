@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 protocol Repo {
     func RepositoreLocal(repositoreRequest: Repositore)
 }
@@ -17,7 +17,8 @@ class RepoLocal: Repo {
     var repositoreLocal: Repositores!
     
     func RepositoreLocal(repositoreRequest: Repositore) {
-            print(repositoreRequest)
+        print("-------------------------------- repositore request")
+        print(repositoreRequest)
             if repositoreLocal == nil{
                 repositoreLocal = Repositores(context: context)
             }
@@ -26,11 +27,12 @@ class RepoLocal: Repo {
             repositoreLocal.fullName = repositoreRequest.fullName
             repositoreLocal.login = repositoreRequest.owner.login
             repositoreLocal.image = repositoreRequest.owner.avatar_url
-        
+            
             do {
                 try context.save()
             } catch {
                 print(error.localizedDescription)
             }
+        
     }
 }

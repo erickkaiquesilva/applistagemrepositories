@@ -23,6 +23,20 @@ class RepositoresManager{
         }
     }
     
+    func getRepositore(with id: Int, context: NSManagedObjectContext) -> Repositore{
+        do {
+            let fetchRequest : NSFetchRequest<Repositores> = Repositores.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "uniqueId == %@", id)
+            let fetchedResults = try context.fetch(fetchRequest) as! [Repositores]
+            if let repositoreGet = fetchedResults.first {
+                repositoreGet
+            }
+        }
+        catch {
+            print ("fetch task failed", error)
+        }
+    }
+    
     func deleteRepositore(index: Int, context: NSManagedObjectContext){
         
         let repositore = repositores[index]
