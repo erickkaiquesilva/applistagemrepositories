@@ -15,7 +15,7 @@ class ListagemTableViewController: UITableViewController {
     let comparador = Comparador()
     var reposLocal: [Repositores] = []
     var reposRequest: [Repositore] = []
-    
+    var repoManager = RepositoresManager.shared
     
     let label = UILabel()
     var page = 1;
@@ -114,9 +114,18 @@ class ListagemTableViewController: UITableViewController {
             let createRepoLocal = RepoLocal()
             createRepoLocal.RepositoreLocal(repositoreRequest: item)
             tableView.reloadData()
+        } else {
+            let id = reposRequest[row].id
+            let reut = repoManager.getRepositore(with: Int64(id), context: context)
+            
+            context.delete(reut)
+            
+            do {
+                try context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
         }
-        
-        
     }
     
     
