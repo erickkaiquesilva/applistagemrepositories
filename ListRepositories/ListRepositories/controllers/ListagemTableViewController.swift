@@ -29,6 +29,13 @@ class ListagemTableViewController: UITableViewController {
         addRefreshControl()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.reposRequest = self.comparador.comparar(repositoreRequest: reposRequest, repositoreLocal: self.repositoresLocal())
+        print(reposRequest)
+        tableView.reloadData()
+    }
+    
     func loadRepositoresRequest(){
         loadRepositore.getAllRepositores(page: page, perPage: perPage) { (object) in
             switch object{
@@ -56,7 +63,8 @@ class ListagemTableViewController: UITableViewController {
         for itemsLocal in reposLocal{
             repositoreLocal.append(itemsLocal)
         }
-        
+        print("--------------- REPO LOCAL ---------------")
+        print(repositoreLocal)
         return repositoreLocal
     }
     
@@ -106,20 +114,20 @@ class ListagemTableViewController: UITableViewController {
             
             let createRepoLocal = RepoLocal()
             createRepoLocal.RepositoreLocal(repositoreRequest: item)
-            
+            tableView.reloadData()
         }
     }
     
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == reposRequest.count - 15 {
+        if indexPath.row == reposRequest.count - 5 {
             page += 1
             perPage += 30
             
             loadRepositore.getAllRepositores(page: page, perPage: perPage) { (object) in
                 switch object{
                 case .success(let model):
-                    self.reposRequest = self.comparador.comparar(repositoreRequest: model.items, repositoreLocal: self.repositoresLocal())
+                    self.reposRequest += self.comparador.comparar(repositoreRequest: model.items, repositoreLocal: self.repositoresLocal())
                     print(self.repositoresLocal())
                     DispatchQueue.main.async {
                         self.tableView.reloadData()

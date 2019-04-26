@@ -17,6 +17,7 @@ class RepoLocal: Repo {
     var repositoreLocal: Repositores!
     
     func RepositoreLocal(repositoreRequest: Repositore) {
+            print(repositoreRequest)
             if repositoreLocal == nil{
                 repositoreLocal = Repositores(context: context)
             }

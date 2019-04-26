@@ -38,6 +38,7 @@ class RepositoresLocalTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = repos.count
+        print(count)
         tableView.backgroundView = count == 0 ? label : nil
         return count
     }
@@ -56,19 +57,19 @@ class RepositoresLocalTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             
-            repos.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
-            
             let repositorieDelete = repos[indexPath.row]
             
             context.delete(repositorieDelete)
             
+            print(repositorieDelete)
+            
             do {
                 try context.save()
+                repos.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
             } catch {
                 print(error.localizedDescription)
             }
-            
         }
     }
     

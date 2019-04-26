@@ -14,10 +14,7 @@ class Comparador{
         return repositoreRequest.map { (repoResponse) in
             var repoResponse = repoResponse
             for repoLocal in repositoreLocal {
-                if Int(repoLocal.idUser) == repoResponse.id {
-                    repoResponse.isSelected = true
-                    break
-                }
+                repoResponse.isSelected = Int(repoLocal.idUser) == repoResponse.id
             }
             return repoResponse
         }
